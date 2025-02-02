@@ -56,6 +56,6 @@ An Angular 14+ single-page application (SPA) that allows users to track their wo
 ## Testing
 - Unit tests using Jasmine & Karma.
 - 100% test coverage for one component and one service.
-![Testing Screenshot](assets/Screenshot%202025-02-02%20at%206.43.44%20PM.png)
+![Testing Screenshot](./assests/TestingSS.png)
 
 
