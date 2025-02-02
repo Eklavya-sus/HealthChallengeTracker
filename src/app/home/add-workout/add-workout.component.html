@@ -1,0 +1,57 @@
+<form 
+  class="flex flex-col w-full max-w-lg mx-auto bg-white p-8 rounded-3xl shadow-lg space-y-6"
+  [formGroup]="addWorkoutGroup"
+  (ngSubmit)="addWorkout()"
+>
+  <!-- Name Field -->
+  <div class="w-full">
+    <label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+    <input 
+      type="text"
+      placeholder="Enter your name"
+      formControlName="name"
+      required
+      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+    />
+    <p *ngIf="addWorkoutGroup.get('name')?.invalid" class="text-sm text-red-500 mt-1">Name is required</p>
+  </div>
+
+  <!-- Workout Type and Minutes Fields -->
+  <div class="grid grid-cols-2 gap-6">
+    <!-- Workout Type Field -->
+    <div class="w-full">
+      <label class="block text-sm font-medium text-gray-700 mb-1">Workout Type</label>
+      <select 
+        formControlName="filter_field"
+        required
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+      >
+        <option *ngFor="let workout of workoutTypes" [value]="workout">{{ workout }}</option>
+      </select>
+      <p *ngIf="addWorkoutGroup.get('filter_field')?.invalid" class="text-sm text-red-500 mt-1">Workout type is required</p>
+    </div>
+
+    <!-- Workout Minutes Field -->
+    <div class="w-full">
+      <label class="block text-sm font-medium text-gray-700 mb-1">Workout Minutes</label>
+      <input 
+        type="number"
+        placeholder="Enter minutes"
+        formControlName="total_time"
+        required
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+      />
+      <p *ngIf="addWorkoutGroup.get('total_time')?.hasError('required')" class="text-sm text-red-500 mt-1">Workout minutes are required</p>
+      <p *ngIf="addWorkoutGroup.get('total_time')?.hasError('min')" class="text-sm text-red-500 mt-1">Minutes must be at least 1</p>
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <button 
+    type="submit"
+    class="w-full px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+    [disabled]="addWorkoutGroup.invalid"
+  >
+    + Add Workout
+  </button>
+</form>

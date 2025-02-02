@@ -1,0 +1,36 @@
+<form class="flex flex-col md:flex-row justify-between p-6 space-y-6 md:space-y-0 md:space-x-6 align-middle bg-white rounded-lg shadow-lg" [formGroup]="searchGroup" (ngSubmit)="$event.preventDefault(); submitForm()">
+    <!-- Search Field -->
+    <mat-form-field class="w-full md:w-[45%]">
+      <mat-label class="text-gray-700">Search</mat-label>
+      <input
+        matInput
+        placeholder="Search"
+        class="rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+        formControlName="search_field"
+      />
+    </mat-form-field>
+  
+    <!-- Filter by Workout Type -->
+    <mat-form-field class="w-full md:w-[45%]">
+      <mat-label class="text-gray-700">Filter by Workout Type</mat-label>
+      <mat-select
+        class="rounded-lg border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+        formControlName="filter_field"
+      >
+        <mat-option *ngFor="let workout of options" [value]="workout.value">
+          {{ workout.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <!-- Add Workout Button -->
+    <div class="flex items-center justify-center md:justify-end w-full md:w-auto">
+      <button
+        mat-raised-button
+        class="bg-indigo-600 text-white hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-200 focus:outline-none transition duration-300 ease-in-out transform hover:scale-105"
+        (click)="addWorkout()"
+      >
+        + Add Workout
+      </button>
+    </div>
+  </form>
