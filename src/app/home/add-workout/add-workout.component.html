@@ -13,7 +13,9 @@
       required
       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
     />
-    <p *ngIf="addWorkoutGroup.get('name')?.invalid" class="text-sm text-red-500 mt-1">Name is required</p>
+    <p *ngIf="addWorkoutGroup.get('name')?.invalid && addWorkoutGroup.get('name')?.touched" class="text-sm text-red-500 mt-1">
+      Name is required
+    </p>
   </div>
 
   <!-- Workout Type and Minutes Fields -->
@@ -28,7 +30,9 @@
       >
         <option *ngFor="let workout of workoutTypes" [value]="workout">{{ workout }}</option>
       </select>
-      <p *ngIf="addWorkoutGroup.get('filter_field')?.invalid" class="text-sm text-red-500 mt-1">Workout type is required</p>
+      <p *ngIf="addWorkoutGroup.get('filter_field')?.invalid && addWorkoutGroup.get('filter_field')?.touched" class="text-sm text-red-500 mt-1">
+        Workout type is required
+      </p>      
     </div>
 
     <!-- Workout Minutes Field -->
@@ -41,8 +45,12 @@
         required
         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
       />
-      <p *ngIf="addWorkoutGroup.get('total_time')?.hasError('required')" class="text-sm text-red-500 mt-1">Workout minutes are required</p>
-      <p *ngIf="addWorkoutGroup.get('total_time')?.hasError('min')" class="text-sm text-red-500 mt-1">Minutes must be at least 1</p>
+      <p *ngIf="addWorkoutGroup.get('total_time')?.hasError('required') && addWorkoutGroup.get('total_time')?.touched" class="text-sm text-red-500 mt-1">
+        Workout minutes are required
+      </p>
+      <p *ngIf="addWorkoutGroup.get('total_time')?.hasError('min') && addWorkoutGroup.get('total_time')?.touched" class="text-sm text-red-500 mt-1">
+        Minutes must be at least 1
+      </p>
     </div>
   </div>
 

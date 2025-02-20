@@ -58,4 +58,3 @@ An Angular 14+ single-page application (SPA) that allows users to track their wo
 - 100% test coverage for one component and one service.
 ![Testing Screenshot](./assests/TestingSS.png)
 
-Test---
