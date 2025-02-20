@@ -1,37 +1,51 @@
 <div class="p-6 bg-white rounded-lg shadow-lg">
-  <!-- Table -->
-  <table mat-table [dataSource]="paginatedData" class="w-full mat-elevation-z8 rounded-lg overflow-hidden">
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef class="bg-gray-100 text-gray-700 font-semibold p-4"> Name </th>
-      <td mat-cell *matCellDef="let element" class="p-4 border-b border-gray-200 text-gray-600"> {{ element.name }} </td>
-    </ng-container>
+  <!-- Table Container -->
+  <div class="min-h-[200px]"> <!-- Added minimum height to prevent layout shift -->
+    <!-- No Results Message -->
+    <div *ngIf="tableData.length === 0" class="flex flex-col items-center justify-center py-12 text-center">
+      <mat-icon class="text-gray-400 text-5xl mb-4">search_off</mat-icon>
+      <h3 class="text-lg font-medium text-gray-900 mb-2">No results found</h3>
+      <p class="text-sm text-gray-500">Try adjusting your search or filter to find what you're looking for</p>
+    </div>
 
-    <!-- Workouts Column -->
-    <ng-container matColumnDef="workouts">
-      <th mat-header-cell *matHeaderCellDef class="bg-gray-100 text-gray-700 font-semibold p-4"> Workouts </th>
-      <td mat-cell *matCellDef="let element" class="p-4 border-b border-gray-200 text-gray-600"> {{ transformWorkouts(element.workouts) }} </td>
-    </ng-container>
+    <table 
+      mat-table 
+      [dataSource]="paginatedData" 
+      class="w-full mat-elevation-z8 rounded-lg overflow-hidden"
+      *ngIf="tableData.length > 0">
+      
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="bg-gray-100 text-gray-700 font-semibold p-4"> Name </th>
+        <td mat-cell *matCellDef="let element" class="p-4 border-b border-gray-200 text-gray-600"> {{element.name}} </td>
+      </ng-container>
 
-    <!-- Number of Workouts Column -->
-    <ng-container matColumnDef="numberOfWorkouts">
-      <th mat-header-cell *matHeaderCellDef class="bg-gray-100 text-gray-700 font-semibold p-4"> Number of Workouts </th>
-      <td mat-cell *matCellDef="let element" class="p-4 border-b border-gray-200 text-gray-600"> {{ element.workouts.length }} </td>
-    </ng-container>
+      <!-- Workouts Column -->
+      <ng-container matColumnDef="workouts">
+        <th mat-header-cell *matHeaderCellDef class="bg-gray-100 text-gray-700 font-semibold p-4"> Workouts </th>
+        <td mat-cell *matCellDef="let element" class="p-4 border-b border-gray-200 text-gray-600"> {{transformWorkouts(element.workouts)}} </td>
+      </ng-container>
 
-    <!-- Total Workout Minutes Column -->
-    <ng-container matColumnDef="totalWorkoutMinutes">
-      <th mat-header-cell *matHeaderCellDef class="bg-gray-100 text-gray-700 font-semibold p-4"> Total Workout Minutes </th>
-      <td mat-cell *matCellDef="let element" class="p-4 border-b border-gray-200 text-gray-600"> {{ transformMinutes(element.workouts) }} </td>
-    </ng-container>
+      <!-- Number of Workouts Column -->
+      <ng-container matColumnDef="numberOfWorkouts">
+        <th mat-header-cell *matHeaderCellDef class="bg-gray-100 text-gray-700 font-semibold p-4"> Number of Workouts </th>
+        <td mat-cell *matCellDef="let element" class="p-4 border-b border-gray-200 text-gray-600"> {{element.workouts.length}} </td>
+      </ng-container>
 
-    <!-- Header and Row Definitions -->
-    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="bg-gray-100"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="hover:bg-gray-50 transition duration-200"></tr>
-  </table>
+      <!-- Total Workout Minutes Column -->
+      <ng-container matColumnDef="totalWorkoutMinutes">
+        <th mat-header-cell *matHeaderCellDef class="bg-gray-100 text-gray-700 font-semibold p-4"> Total Workout Minutes </th>
+        <td mat-cell *matCellDef="let element" class="p-4 border-b border-gray-200 text-gray-600"> {{transformMinutes(element.workouts)}} </td>
+      </ng-container>
+
+      <!-- Header and Row Definitions -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns" class="bg-gray-100"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="hover:bg-gray-50 transition duration-200"></tr>
+    </table>
+  </div>
 
   <!-- Paginator -->
-  <div class="p-6">
+  <div class="p-6" *ngIf="tableData.length > 0">
     <mat-paginator
       [length]="totalItems"
       [pageSize]="pageSize"

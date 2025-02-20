@@ -1,13 +1,15 @@
 import { Component, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common'; 
 import { MatTable, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { EventServices } from '../../services/EventServices/EventServices';
 import { UpdateWorkoutServices } from '../../services/updateWorkoutServices/updateWorkoutService';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule],
+  imports: [CommonModule,MatTableModule, MatPaginatorModule,MatIconModule],
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
