@@ -1,0 +1,9 @@
+.active-route {
+    background-color: rgb(219 234 254) !important;
+    color: rgb(37 99 235) !important;
+  }
+  
+  .active-route:hover {
+    background-color: rgb(191 219 254) !important;
+    color: rgb(29 78 216) !important;
+  }

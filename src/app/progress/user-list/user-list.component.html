@@ -1,8 +1,8 @@
-<div class="p-5 w-[300px] bg-white shadow-md rounded-lg">
-    <mat-list class="bg-white divide-y divide-gray-300">
+<div class="p-4 w-[300px] bg-white shadow-lg rounded-lg">
+    <mat-list class="bg-white divide-y divide-gray-200 rounded-lg overflow-hidden">
         <mat-list-item 
             *ngFor="let user of userList" 
-            class="py-2 px-4 hover:bg-gray-200 cursor-pointer" 
+            class="py-3 px-4 hover:bg-gray-50 transition duration-200 cursor-pointer" 
             (click)="toggle(user)">
                 {{ user.name }}
         </mat-list-item>

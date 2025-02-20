@@ -1,27 +1,30 @@
-<div class="h-screen w-20 bg-white shadow-lg flex flex-col items-center py-6">
-    <div class="space-y-6">
-      <!-- Home Button -->
-      <div class="relative group">
-        <button mat-icon-button 
-                (click)="navigate('')"
-                class="w-12 h-12 rounded-xl flex items-center justify-center bg-gray-50 hover:bg-gray-100 transition-all duration-200 text-gray-600 hover:text-gray-900">
-          <mat-icon>home</mat-icon>
-        </button>
-        <div class="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
-          Home
-        </div>
+<div class="h-screen w-20 bg-gray-50 flex flex-col items-center py-6">
+  <div class="space-y-6">
+    <!-- Home Button -->
+    <div class="relative group">
+      <button mat-icon-button 
+              routerLink=""
+              routerLinkActive="active-route"
+              [routerLinkActiveOptions]="{exact: true}"
+              class="w-12 h-12 rounded-xl flex items-center justify-center bg-gray-50 hover:bg-gray-100 transition-all duration-200 text-gray-600 hover:text-gray-900">
+        <mat-icon>home</mat-icon>
+      </button>
+      <div class="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+        Home
       </div>
-  
-      <!-- Progress Button -->
-      <div class="relative group">
-        <button mat-icon-button 
-                (click)="navigate('progress')"
-                class="w-12 h-12 rounded-xl flex items-center justify-center bg-gray-50 hover:bg-gray-100 transition-all duration-200 text-gray-600 hover:text-gray-900">
-          <mat-icon>show_chart</mat-icon>
-        </button>
-        <div class="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
-          Progress
-        </div>
+    </div>
+
+    <!-- Progress Button -->
+    <div class="relative group">
+      <button mat-icon-button 
+              routerLink="progress"
+              routerLinkActive="active-route"
+              class="w-12 h-12 rounded-xl flex items-center justify-center bg-gray-50 hover:bg-gray-100 transition-all duration-200 text-gray-600 hover:text-gray-900">
+        <mat-icon>show_chart</mat-icon>
+      </button>
+      <div class="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-white text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+        Progress
       </div>
     </div>
   </div>
+</div>

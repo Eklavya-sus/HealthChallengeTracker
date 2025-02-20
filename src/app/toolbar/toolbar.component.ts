@@ -3,18 +3,21 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-toolbar',
   standalone: true,
-  imports: [MatButtonModule, MatIconModule, MatTooltipModule, MatDividerModule],
+  imports: [
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatDividerModule,
+    RouterModule
+  ],
   templateUrl: './toolbar.component.html',
-  styleUrl: './toolbar.component.css'
+  styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent {
-  constructor(private router: Router){}
-
-  navigate(path: string){
-    this.router.navigate([path]);
-  }
+  constructor(private router: Router) {}
 }
